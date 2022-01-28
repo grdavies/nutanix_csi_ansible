@@ -6,7 +6,7 @@
       repo_url: "{{ nutanix_helm_repo_url }}"
 
   - name: generate helm chart values file
-    ansible.builtin.template:
+    template:
       src: templates/nutanix_csi_values.yaml
       dest: ~/.nutanix_csi_values.yaml
       owner: nutanix
