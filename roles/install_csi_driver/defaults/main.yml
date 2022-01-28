@@ -1,0 +1,40 @@
+# roles/install_csi_driver/defaults/main.yml
+nutanix_helm_repo_url: "https://nutanix.github.io/helm/"
+namespace: "default"
+chart_ref: "nutanix/nutanix-csi-storage"
+
+# csi driver default values
+legacy: false
+volumeClass: false
+volumeClassName: nutanix-volume
+fileClass: false
+fileClassName: "nutanix-file"
+dynamicFileClass: false
+dynamicFileClassName: "nutanix-dynamicfile"
+defaultStorageClass: "none"
+prismEndPoint: "10.0.0.1"
+username: "admin"
+password: "nutanix/4u"
+secretName: "ntnx-secret"
+createSecret: true
+storageContainer: "default"
+fsType: "xfs"
+networkSegmentation: false
+lvmVolume: false
+lvmDisks: 4
+fileHost: "10.0.0.3"
+filePath: "share"
+fileServerName: "file"
+kubeletDir: "/var/lib/kubelet"
+nodeSelector: {}
+tolerations: []
+imagePullPolicy: "IfNotPresent"
+provisioner:
+  nodeSelector: {}
+  tolerations: []
+node:
+  nodeSelector: {}
+  tolerations: []
+servicemonitor:
+  enabled: false
+  labels: k8s-app: csi-driver

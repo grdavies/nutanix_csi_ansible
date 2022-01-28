@@ -1,0 +1,15 @@
+# roles/install_csi_driver/tasks/main.yml
+---
+    - name: add nutanix csi helm repo
+      kubernetes.core.helm_repository:
+  	    name: nutanix
+  	    repo_url: "{{ nutanix_helm_repo_url }}"
+
+    - name: install nutanix csi helm chart
+      kubernetes.core.helm:
+    	  name: nutanix-csi
+    	    namespace: "{{ namespace }}"
+    	    chart_ref: "{{ chart_ref }}"
+          wait: yes
+          state: present
+          values: "{{ lookup('template', 'nutanix_csi_values.yaml') | from_yaml }}"

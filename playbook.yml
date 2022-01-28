@@ -1,0 +1,5 @@
+---
+- hosts: localhost
+    hosts: all
+    roles:
+      - install_csi_driver
