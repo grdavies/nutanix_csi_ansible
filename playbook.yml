@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
-    hosts: all
+  - name: "Common Setup for all servers"
+    hosts: localhost
     roles:
       - install_csi_driver
