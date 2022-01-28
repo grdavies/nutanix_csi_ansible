@@ -5,7 +5,15 @@
       name: nutanix
       repo_url: "{{ nutanix_helm_repo_url }}"
 
-  - name: install nutanix csi helm chart
+  - name: generate helm chart values file
+    ansible.builtin.template:
+      src: templates/nutanix_csi_values.yaml
+      dest: ~/.nutanix_csi_values.yaml
+      owner: nutanix
+      group: nutanix
+      mode: '0600'
+
+  - name: install nutanix csi helm chart using values file
     kubernetes.core.helm:
       name: nutanix-csi
       release_namespace: "{{ namespace }}"
@@ -13,4 +21,5 @@
       chart_ref: "{{ chart_ref }}"
       wait: yes
       state: present
-      values: "{{ lookup('template', 'nutanix_csi_values.yaml') | from_yaml }}"
+      values_files:
+        - ~/.nutanix_csi_values.yaml
