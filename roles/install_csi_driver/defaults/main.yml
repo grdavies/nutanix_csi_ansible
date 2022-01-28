@@ -37,4 +37,4 @@ node:
   tolerations: []
 servicemonitor:
   enabled: false
-  labels: k8s-app: csi-driver
+  labels: { k8s-app: csi-driver }
