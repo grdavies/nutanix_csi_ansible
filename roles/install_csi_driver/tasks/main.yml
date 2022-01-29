@@ -22,7 +22,7 @@
       wait: yes
       state: present
       values_files:
-        - ~/.ntnx-helm-csi-values.yaml
+        - "{{ lookup('template', 'ntnx-helm-csi-values.yaml') | from_yaml }}"
 
   # - name: install nutanix csi driver object
   #   kubernetes.core.k8s:
