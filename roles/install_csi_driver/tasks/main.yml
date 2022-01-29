@@ -5,19 +5,19 @@
       name: nutanix
       repo_url: "{{ nutanix_helm_repo_url }}"
 
-  - name: generate helm chart values file
-    template:
-      src: templates/ntnx-helm-csi-values.yaml
-      dest: ~/.ntnx-helm-csi-values.yaml
-      owner: nutanix
-      group: nutanix
-      mode: '0600'
-
+  # - name: generate helm chart values file
+  #   template:
+  #     src: templates/ntnx-helm-csi-values.yaml
+  #     dest: ~/.ntnx-helm-csi-values.yaml
+  #     owner: nutanix
+  #     group: nutanix
+  #     mode: '0600'
+  #
   - name: install nutanix csi helm chart using values file
     kubernetes.core.helm:
       name: nutanix-csi
       release_namespace: "{{ namespace }}"
-      create_namespace: true
+      create_namespace: "{{ namespace_create }}"
       chart_ref: "{{ chart_ref }}"
       wait: yes
       state: present
