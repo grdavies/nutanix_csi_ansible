@@ -1,0 +1,27 @@
+allowVolumeExpansion: true
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+    annotations:
+        storageclass.kubernetes.io/is-default-class: "true"
+    name: default-storageclass
+parameters:
+   csi.storage.k8s.io/provisioner-secret-name: secret-name
+   csi.storage.k8s.io/provisioner-secret-namespace: secret-namespace
+   csi.storage.k8s.io/node-publish-secret-name: secret-name
+   csi.storage.k8s.io/node-publish-secret-namespace: secret-namespace
+   csi.storage.k8s.io/controller-expand-secret-name: secret-name
+   csi.storage.k8s.io/controller-expand-secret-namespace: secret-namespace
+   csi.storage.k8s.io/fstype: file-system type
+   dataServiceEndPoint: dataservice-ip:port
+   flashMode: ENABLED | DISABLED
+   storageContainer: storage-container-name
+   chapAuth: ENABLED | DISABLED
+   storageType: NutanixVolumes
+   whitelistIPMode: ENABLED/DISABLED
+   whitelistIPAddr: ip-address
+provisioner: csi.nutanix.com
+reclaimPolicy: Delete | Retain
+mountOptions:
+   -option1
+   -option2
