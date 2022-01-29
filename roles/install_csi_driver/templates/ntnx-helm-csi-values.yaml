@@ -27,14 +27,14 @@ imagePullPolicy: {{ imagePullPolicy }}
 # Storage Class settings
 #
 # choose for which mode (Volume, File, Dynamic File) storageclass need to be created
-volumeClass: {{ volumes.volumeClass }}
-volumeClassName: "{{ volumes.volumeClassName }}"
+volumeClass: {{ volumeClass }}
+volumeClassName: "{{ volumeClassName }}"
 
-fileClass: {{ files.fileClass }}
-fileClassName: "{{ files.fileClassName }}"
+fileClass: {{ fileClass }}
+fileClassName: "{{ fileClassName }}"
 
-dynamicFileClass: {{ files.dynamicFileClass }}
-dynamicFileClassName: "{{ files.dynamicFileClassName }}"
+dynamicFileClass: {{ dynamicFileClass }}
+dynamicFileClassName: "{{ dynamicFileClassName }}"
 
 
 # Default Storage Class settings
@@ -48,33 +48,33 @@ defaultStorageClass: {{ defaultStorageClass }}
 # Allow dynamic creation of Volumes and Fileshare
 # needed if volumeClass or dynamicFileClass is set to true
 
-prismEndPoint: "{{ prism.prismEndPoint }}"
-username: "{{ prism.username }}"
-password: "{{ prism.password }}"
-secretName: {{ prism.secretName }}
-createSecret: {{ prism.createSecret }}
+prismEndPoint: "{{ prismEndPoint }}"
+username: "{{ username }}"
+password: "{{ password }}"
+secretName: {{ secretName }}
+createSecret: {{ createSecret }}
 
 # Volumes Settings
 #
-{% if volumes.volumeClass %}
-storageContainer: {{ volumes.storageContainer }}
-fsType: {{ volumes.fsType }}
-lvmVolume: {{ volumes.lvmVolume }}
-lvmDisks: {{ volumes.lvmDisks }}
-networkSegmentation: {{ volumes.networkSegmentation }}
+{% if volumeClass %}
+storageContainer: {{ storageContainer }}
+fsType: {{ fsType }}
+lvmVolume: {{ lvmVolume }}
+lvmDisks: {{ lvmDisks }}
+networkSegmentation: {{ networkSegmentation }}
 {% endif %}
 
 # Files Settings
 #
-{% if files.fileClass %}
-fileHost: {{ files.fileHost }}
-filePath: {{ files.filePath }}
+{% if fileClass %}
+fileHost: {{ fileHost }}
+filePath: {{ filePath }}
 {% endif %}
 
 # Dynamic Files Settings
 #
-{% if files.dynamicFileClass is defined %}
-fileServerName: {{ files.fileServerName }}
+{% if dynamicFileClass is defined %}
+fileServerName: {{ fileServerName }}
 {% endif %}
 
 
