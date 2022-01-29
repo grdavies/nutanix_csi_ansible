@@ -5,30 +5,30 @@ chart_ref: "nutanix/nutanix-csi-storage"
 
 # csi driver default values
 defaultStorageClass: none
-prism:
-  prismEndPoint: ""
-  username: "admin"
-  password: ""
-  secretName: "ntnx-secret"
-  createSecret: true
-  storageContainer: "default"
+#prism:
+prismEndPoint: ""
+username: "admin"
+password: ""
+secretName: "ntnx-secret"
+createSecret: true
+storageContainer: "default"
 
-volumes:
-  volumeClass: false
-  volumeClassName: "nutanix-volume"
-  networkSegmentation: false
-  fsType: "xfs"
-  lvmVolume: false
-  lvmDisks: 4
+# volumes:
+volumeClass: false
+volumeClassName: "nutanix-volume"
+networkSegmentation: false
+fsType: "xfs"
+lvmVolume: false
+lvmDisks: 4
 
-files:
-  fileClass: false
-  fileClassName: "nutanix-file"
-  dynamicFileClass: false
-  dynamicFileClassName: nutanix-dynamicfile
-  fileHost: ""
-  filePath: ""
-  fileServerName: ""
+# files:
+fileClass: false
+fileClassName: "nutanix-file"
+dynamicFileClass: false
+dynamicFileClassName: nutanix-dynamicfile
+fileHost: ""
+filePath: ""
+fileServerName: ""
 
 # CSI Driver Defaults
 legacy: false
