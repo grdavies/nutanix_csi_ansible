@@ -57,27 +57,24 @@ createSecret: {{ prism.createSecret }}
 # Volumes Settings
 #
 {% if volumes.volumeClass %}
-storageContainer: {{ storageContainer }}
-fsType: {{ fsType }}
-lvmVolume: {{ lvmVolume }}
-lvmDisks: {{ lvmDisks }}
-networkSegmentation: {{ networkSegmentation }}
+storageContainer: {{ volumes.storageContainer }}
+fsType: {{ volumes.fsType }}
+lvmVolume: {{ volumes.lvmVolume }}
+lvmDisks: {{ volumes.lvmDisks }}
+networkSegmentation: {{ volumes.networkSegmentation }}
 {% endif %}
 
 # Files Settings
 #
-{% if files.fileClass is defined %}
-fileHost: {{ fileHost }}
-{% endif %}
-{% if filePath is defined %}
-filePath: {{ filePath }}
-{% else %}
+{% if files.fileClass %}
+fileHost: {{ files.fileHost }}
+filePath: {{ files.filePath }}
 {% endif %}
 
 # Dynamic Files Settings
 #
-{% if fileServerName is defined %}
-fileServerName: {{ fileServerName }}
+{% if files.dynamicFileClass is defined %}
+fileServerName: {{ files.fileServerName }}
 {% endif %}
 
 
