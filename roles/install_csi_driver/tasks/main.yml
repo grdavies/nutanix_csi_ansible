@@ -7,8 +7,8 @@
 
   - name: generate helm chart values file
     template:
-      src: templates/nutanix_csi_values.yaml
-      dest: ~/.nutanix_csi_values.yaml
+      src: templates/ntnx-helm-csi-values.yaml
+      dest: ~/.ntnx-helm-csi-values.yaml
       owner: nutanix
       group: nutanix
       mode: '0600'
@@ -22,7 +22,7 @@
       wait: yes
       state: present
       values_files:
-        - ~/.nutanix_csi_values.yaml
+        - ~/.ntnx-helm-csi-values.yaml
 
   # - name: install nutanix csi driver object
   #   kubernetes.core.k8s:
