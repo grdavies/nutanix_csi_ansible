@@ -1,6 +1,7 @@
 # roles/install_csi_driver/defaults/main.yml
 nutanix_helm_repo_url: "https://nutanix.github.io/helm/"
 namespace: "kube-system"
+create_namespace: false 
 chart_ref: "nutanix/nutanix-csi-storage"
 
 # csi driver default values
