@@ -27,14 +27,14 @@ imagePullPolicy: {{ imagePullPolicy }}
 # Storage Class settings
 #
 # choose for which mode (Volume, File, Dynamic File) storageclass need to be created
-volumeClass: {{ volumeClass }}
-volumeClassName: "{{ volumeClassName }}"
+volumeClass: {{ volumes.volumeClass }}
+volumeClassName: "{{ volumes.volumeClassName }}"
 
-fileClass: {{ fileClass }}
-fileClassName: "{{ fileClassName }}"
+fileClass: {{ files.fileClass }}
+fileClassName: "{{ files.fileClassName }}"
 
-dynamicFileClass: {{ dynamicFileClass }}
-dynamicFileClassName: "{{ dynamicFileClassName }}"
+dynamicFileClass: {{ files.dynamicFileClass }}
+dynamicFileClassName: "{{ files.dynamicFileClassName }}"
 
 
 # Default Storage Class settings
@@ -48,37 +48,37 @@ defaultStorageClass: {{ defaultStorageClass }}
 # Allow dynamic creation of Volumes and Fileshare
 # needed if volumeClass or dynamicFileClass is set to true
 
-prismEndPoint: {{ prismEndPoint }}
-
-username: {{ username }}
-password: {{ password }}
-
-secretName: {{ secretName }}
-
-# Nutanix Prism Elements Existing Secret
-#
-# if set to false a new secret will not be created
-createSecret: {{ createSecret }}
-
+prismEndPoint: "{{ prism.prismEndPoint }}"
+username: "{{ prism.username }}"
+password: "{{ prism.password }}"
+secretName: {{ prism.secretName }}
+createSecret: {{ prism.createSecret }}
 
 # Volumes Settings
 #
+{% if volumes.volumeClass %}
 storageContainer: {{ storageContainer }}
 fsType: {{ fsType }}
-
 lvmVolume: {{ lvmVolume }}
 lvmDisks: {{ lvmDisks }}
-
 networkSegmentation: {{ networkSegmentation }}
+{% endif %}
 
 # Files Settings
 #
+{% if files.fileClass is defined %}
 fileHost: {{ fileHost }}
+{% endif %}
+{% if filePath is defined %}
 filePath: {{ filePath }}
+{% else %}
+{% endif %}
 
 # Dynamic Files Settings
 #
+{% if fileServerName is defined %}
 fileServerName: {{ fileServerName }}
+{% endif %}
 
 
 # Volume metrics and CSI operations metrics configuration
