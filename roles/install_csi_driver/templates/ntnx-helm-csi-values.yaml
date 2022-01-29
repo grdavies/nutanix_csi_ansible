@@ -73,7 +73,7 @@ filePath: {{ filePath }}
 
 # Dynamic Files Settings
 #
-{% if dynamicFileClass is defined %}
+{% if dynamicFileClass %}
 fileServerName: {{ fileServerName }}
 {% endif %}
 
