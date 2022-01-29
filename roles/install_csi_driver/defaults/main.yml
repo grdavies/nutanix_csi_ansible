@@ -4,31 +4,38 @@ namespace: "kube-system"
 chart_ref: "nutanix/nutanix-csi-storage"
 
 # csi driver default values
+defaultStorageClass: none
+prism:
+  prismEndPoint: ""
+  username: "admin"
+  password: ""
+  secretName: "ntnx-secret"
+  createSecret: true
+  storageContainer: "default"
+
+volumes:
+  volumeClass: false
+  volumeClassName: "nutanix-volume"
+  networkSegmentation: false
+  fsType: "xfs"
+  lvmVolume: false
+  lvmDisks: 4
+
+files:
+  fileClass: false
+  fileClassName: "nutanix-file"
+  dynamicFileClass: false
+  dynamicFileClassName: nutanix-dynamicfile
+  fileHost: ""
+  filePath: ""
+  fileServerName: ""
+
+# CSI Driver Defaults
 legacy: false
 os: none
-volumeClass: false
 kubeletDir: "/var/lib/kubelet"
 nodeSelector: {}
 tolerations: []
 imagePullPolicy: IfNotPresent
-volumeClassName: nutanix-volume
-fileClass: false
-fileClassName: nutanix-file
-dynamicFileClass: false
-dynamicFileClassName: nutanix-dynamicfile
-defaultStorageClass: none
-prismEndPoint: "10.0.0.1"
-username: "admin"
-password: "nutanix/4u"
-secretName: ntnx-secret
-createSecret: true
-storageContainer: default
-fsType: "xfs"
-lvmVolume: false
-lvmDisks: 4
-networkSegmentation: false
-fileHost: 10.0.0.3
-filePath: share
-fileServerName: file
 servicemonitor:
   enabled: false
